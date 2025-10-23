@@ -63,8 +63,8 @@ W := W - learning_rate * (dL/dW)
 
 ```bash
 # Clone the repo
-git clone https://github.com/yourusername/rnn-next-word.git
-cd rnn-next-word
+git clone git@github.com:Nishaan-Ghimire/RNN-from-scratch.git
+cd RNN-from-scratch
 
 # Install requirements
 pip install -r requirements.txt
