@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+  <meta charset="UTF-8" />
+  <title>Nepali RNN Text Generator</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #fafafa;
+      padding: 40px;
+    }
+    #container {
+      max-width: 500px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <h2>🧠 Nepali Joke Generator</h2>
+    <input type="text" id="seed" placeholder="Enter seed word (e.g., म)">
+    <button onclick="generate()">Generate</button>
+    <p id="output"></p>
+  </div>
+
+  <script>
+    async function generate() {
+      const seed = document.getElementById('seed').value || 'म';
+      const res = await fetch('/generate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ seed: seed, num_words: 15, temperature: 0.8 })
+      });
+      const data = await res.json();
+      document.getElementById('output').textContent = data.generated_text;
+    }
+  </script>
+</body>
+</html>
